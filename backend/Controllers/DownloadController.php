@@ -135,7 +135,7 @@ class DownloadController {
         echo "hello world";
     }
 
-    public function office(Request $request, Response $response, StreamedResponse $streamedResponse) {
+    public function office() {
      
         header('Content-Disposition: attachement; filename="invoice.docx"');
         header('Content-Transfer-Encoding: binary');
