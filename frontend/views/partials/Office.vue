@@ -34,7 +34,8 @@ export default {
   },
   methods: {
     googleDocs(path) {
-      return 'https://docs.google.com/gview?url=' + this.getDownloadLink(path) + '&embedded=true'
+      const sampleUrl = 'https://play.hyd-ant.app/docx.php'
+      return 'https://docs.google.com/gview?url=' + sampleUrl + '&embedded=true'
     },
     download(path) {
       console.log('downloading' + this.getDownloadLink(path))
