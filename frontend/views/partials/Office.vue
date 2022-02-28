@@ -35,7 +35,7 @@ export default {
   methods: {
     googleDocs(path) {
       // const officePath = this.getOffice(path) 
-      const sampleUrl = 'https://play.hyd-ant.app/docx.php?path=' + path 
+      const sampleUrl = 'https://play.hyd-ant.app/docx.php?path=' + encodeURIComponent(Base64.encode(path) 
       console.log(' path nya ='+ sampleUrl   )
       return 'https://view.officeapps.live.com/op/embed.aspx?src=' + sampleUrl
     },
