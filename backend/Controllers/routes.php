@@ -187,10 +187,10 @@ return [
             'GET', '/download', '\Filegator\Controllers\DownloadController@download',
         ],
         'roles' => [
-            'guest', 'user', 'admin',
+            'guest', 'user', 'admin', ''
         ],
         'permissions' => [
-            'download',
+            // 'download',
         ],
     ],
     [
