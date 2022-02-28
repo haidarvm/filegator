@@ -6,7 +6,7 @@
         <a class="is-block name" @click="download(currentItem.path)">
           {{ currentItem.name }}
         </a>
-        <iframe :src="googleDocs(currentItem.path)" width="700" height="750"></iframe>
+        <iframe :src="googleDocs(currentItem.path)" width='700' height='750' frameborder='0'></iframe>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@ export default {
     googleDocs(path) {
       const sampleUrl = 'https://play.hyd-ant.app/docx.php?path=' + encodeURIComponent(Base64.encode(path))
       console.log(' path nya ='+ sampleUrl)
-      return 'https://view.officeapps.live.com/op/embed.aspx?src=' + sampleUrl
+      return 'https://docs.google.com/gview?url=' + sampleUrl + '&embedded=true'
     },
     download(path) {
       console.log('downloading' + this.getDownloadLink(path))
