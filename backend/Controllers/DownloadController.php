@@ -151,7 +151,7 @@ class DownloadController {
         // header('Content-type: ' . $contentType);
         header('Content-Disposition: attachement; filename="' . $file['filename'] . '.docx"');
         header('Content-Transfer-Encoding: binary');
-        readfile('/home/haidar/public_html/test/php/filegatorm/repository/'.$file['filename']);
+        readfile('/var/www/filegator/repository/'.$file['filename']);
     }
 
     public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
