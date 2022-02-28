@@ -22,8 +22,7 @@ use Filegator\Services\Tmpfs\TmpfsInterface;
 use Symfony\Component\HttpFoundation\HeaderUtils;
 use Symfony\Component\Mime\MimeTypes;
 
-class DownloadController
-{
+class DownloadController {
     protected $auth;
 
     protected $session;
@@ -32,8 +31,7 @@ class DownloadController
 
     protected $storage;
 
-    public function __construct(Config $config, Session $session, AuthInterface $auth, Filesystem $storage)
-    {
+    public function __construct(Config $config, Session $session, AuthInterface $auth, Filesystem $storage) {
         $this->session = $session;
         $this->config = $config;
         $this->auth = $auth;
@@ -44,8 +42,7 @@ class DownloadController
         $this->storage->setPathPrefix($user->getHomeDir());
     }
 
-    public function download(Request $request, Response $response, StreamedResponse $streamedResponse)
-    {
+    public function download(Request $request, Response $response, StreamedResponse $streamedResponse) {
         try {
             $file = $this->storage->readStream((string) base64_decode($request->input('path')));
         } catch (\Exception $e) {
@@ -56,7 +53,7 @@ class DownloadController
             // @codeCoverageIgnoreStart
             set_time_limit(0);
             if ($file['stream']) {
-                while (! feof($file['stream'])) {
+                while (!feof($file['stream'])) {
                     echo fread($file['stream'], 1024 * 8);
                     ob_flush();
                     flush();
@@ -72,7 +69,7 @@ class DownloadController
 
         $disposition = HeaderUtils::DISPOSITION_ATTACHMENT;
 
-        $download_inline = (array)$this->config->get('download_inline', ['pdf']);
+        $download_inline = (array) $this->config->get('download_inline', ['pdf']);
         if (in_array($extension, $download_inline) || in_array('*', $download_inline)) {
             $disposition = HeaderUtils::DISPOSITION_INLINE;
         }
@@ -116,8 +113,35 @@ class DownloadController
         $streamedResponse->send();
     }
 
-    public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver)
-    {
+    public function getFile(Request $request, Response $response, StreamedResponse $streamedResponse) {
+        try {
+            $file = $this->storage->readStream((string) base64_decode($request->input('path')));
+        } catch (\Exception $e) {
+            return $response->redirect('/');
+        }
+        $extension = pathinfo($file['filename'], PATHINFO_EXTENSION);
+        $mimes = (new MimeTypes())->getMimeTypes($extension);
+        $contentType = !empty($mimes) ? $mimes[0] : 'application/octet-stream';
+        $disposition = HeaderUtils::DISPOSITION_ATTACHMENT;
+        $contentDisposition = HeaderUtils::makeDisposition($disposition, $file['filename'], 'file');
+        header('Content-Length: ' . $file['filesize']);
+        header('Content-type: ' . $contentType);
+        header('Content-Disposition: ' . $contentDisposition . '; filename="' . $file['filename'] . '.docx"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        set_time_limit(0);
+        if ($file['stream']) {
+            while (!feof($file['stream'])) {
+                echo fread($file['stream'], 1024 * 8);
+                ob_flush();
+                flush();
+            }
+            fclose($file['stream']);
+        }
+    }
+
+    public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
         $items = $request->input('items', []);
 
         $uniqid = $archiver->createArchive($this->storage);
@@ -139,8 +163,7 @@ class DownloadController
         return $response->json(['uniqid' => $uniqid]);
     }
 
-    public function batchDownloadStart(Request $request, StreamedResponse $streamedResponse, TmpfsInterface $tmpfs)
-    {
+    public function batchDownloadStart(Request $request, StreamedResponse $streamedResponse, TmpfsInterface $tmpfs) {
         $uniqid = (string) preg_replace('/[^0-9a-zA-Z_]/', '', (string) $request->input('uniqid'));
         $file = $tmpfs->readStream($uniqid);
 
@@ -148,7 +171,7 @@ class DownloadController
             // @codeCoverageIgnoreStart
             set_time_limit(0);
             if ($file['stream']) {
-                while (! feof($file['stream'])) {
+                while (!feof($file['stream'])) {
                     echo fread($file['stream'], 1024 * 8);
                     ob_flush();
                     flush();

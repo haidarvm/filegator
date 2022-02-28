@@ -149,11 +149,20 @@ const funcs = {
     getDownloadLink(path) {
       return Vue.config.baseURL+'/download&path='+encodeURIComponent(Base64.encode(path))
     },
+    getLink(path) {
+      return Vue.config.baseURL+'/getfile&path='+encodeURIComponent(Base64.encode(path))
+    },
     hasPreview(name) {
-      return this.isText(name) || this.isImage(name)
+      return this.isText(name) || this.isImage(name) || this.isPdf(name) || this.isOffice(name)
     },
     isText(name) {
       return this.hasExtension(name, store.state.config.editable)
+    },
+    isPdf(name) {
+      return this.hasExtension(name, ['.pdf'])
+    },
+    isOffice(name) {
+      return this.hasExtension(name, ['.docx', 'doc','.xls', '.xlsx', '.pptx'])
     },
     isImage(name) {
       return this.hasExtension(name, ['.jpg', '.jpeg', '.gif', '.png', '.bmp', '.svg', '.tiff', '.tif'])

@@ -166,6 +166,8 @@ import Menu from './partials/Menu'
 import Tree from './partials/Tree'
 import Editor from './partials/Editor'
 import Gallery from './partials/Gallery'
+import Pdf from './partials/Pdf'
+import Office from './partials/Office'
 import Search from './partials/Search'
 import Pagination from './partials/Pagination'
 import Upload from './partials/Upload'
@@ -423,6 +425,12 @@ export default {
       }
       if (this.isText(item.path)) {
         modal = Editor
+      }
+      if (this.isPdf(item.path)) {
+        modal = Pdf
+      }
+      if (this.isOffice(item.path)) {
+        modal = Office
       }
       this.$modal.open({
         parent: this,

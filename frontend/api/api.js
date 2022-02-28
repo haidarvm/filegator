@@ -211,6 +211,17 @@ const api = {
         .catch(error => reject(error))
     })
   },
+  getFile (params) {
+    return new Promise((resolve, reject) => {
+      axios.get('getfile&path='+ encodeURIComponent(Base64.encode(params.path)),
+      {
+        responseType: 'arraybuffer',
+        transformResponse: [data => data],
+      })
+        .then(res => resolve(res.data))
+        .catch(error => reject(error))
+    })
+  },
 }
 
 export default api

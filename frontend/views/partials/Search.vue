@@ -2,7 +2,7 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">
-        {{ lang('Search') }}
+        {{ lang('Search') }} File
       </p>
       <b-loading :is-full-page="false" :active.sync="searching" />
     </header>

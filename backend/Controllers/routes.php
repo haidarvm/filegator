@@ -267,4 +267,14 @@ return [
             'read', 'write',
         ],
     ],
+    [
+        'route' => [
+            'GET', '/getfile', '\Filegator\Controllers\DownloadController@getFile',
+        ],
+        'roles' => [
+            'guest', 'user', 'admin', ''
+        ],
+        'permissions' => [
+        ],
+    ],
 ];
