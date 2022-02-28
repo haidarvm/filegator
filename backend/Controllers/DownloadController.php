@@ -139,9 +139,17 @@ class DownloadController {
         try {
             $file = $this->storage->readStream((string) base64_decode($request->input('path')));
         } catch (\Exception $e) {
-            return $response->redirect('/');
+            // return $response->redirect('/');
         }
-        header('Content-Disposition: attachement;filename="invoice.docx"');
+        // echo "hello world". $file['filename'];
+        $extension = pathinfo($file['filename'], PATHINFO_EXTENSION);
+        $mimes = (new MimeTypes())->getMimeTypes($extension);
+        $contentType = !empty($mimes) ? $mimes[0] : 'application/octet-stream';
+        $disposition = HeaderUtils::DISPOSITION_ATTACHMENT;
+        $contentDisposition = HeaderUtils::makeDisposition($disposition, $file['filename'], 'file');
+        header('Content-Length: ' . $file['filesize']);
+        header('Content-type: ' . $contentType);
+        header('Content-Disposition: ' . $contentDisposition . '; filename="' . $file['filename'] . '.docx"');
         header('Content-Transfer-Encoding: binary');
         readfile($file['stream']);
     }
