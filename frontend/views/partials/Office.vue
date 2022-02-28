@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     officeSrc(path) {
-      return 'http://docs.google.com/gview?url=http://remote.url.tld/' + this.getDownloadLink(path) + '&embedded=true'
+      return 'https://docs.google.com/gview?url=http://remote.url.tld/' + this.getDownloadLink(path) + '&embedded=true'
     },
     download(item) {
       window.open(this.getDownloadLink(item.path), '_blank')
