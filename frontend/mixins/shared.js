@@ -153,7 +153,7 @@ const funcs = {
       return Vue.config.baseURL+'/getfile&path='+encodeURIComponent(Base64.encode(path))
     },
     getOffice(path) {
-      return Vue.config.baseURL+'/getfile&path='+encodeURIComponent(Base64.encode(path))
+      return Vue.config.baseURL+'/office&path='+encodeURIComponent(Base64.encode(path))
     },
     hasPreview(name) {
       return this.isText(name) || this.isImage(name) || this.isPdf(name) || this.isOffice(name)
