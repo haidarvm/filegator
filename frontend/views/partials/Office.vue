@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { Base64 } from 'js-base64'
 import _ from 'lodash'
 export default {
   name: 'Office',
@@ -34,7 +35,6 @@ export default {
   },
   methods: {
     googleDocs(path) {
-      // const officePath = this.getOffice(path) 
       const sampleUrl = 'https://play.hyd-ant.app/docx.php?path=' + encodeURIComponent(Base64.encode(path))
       console.log(' path nya ='+ sampleUrl)
       return 'https://view.officeapps.live.com/op/embed.aspx?src=' + sampleUrl
