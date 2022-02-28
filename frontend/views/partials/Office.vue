@@ -37,7 +37,7 @@ export default {
       const officePath = this.getDownloadLink(path) 
       const sampleUrl = 'https://play.hyd-ant.app/docx.php' 
       console.log(' path nya ='+ officePath  + '   :' + sampleUrl + path )
-      return 'https://view.officeapps.live.com/op/embed.aspx?src=' + officePath
+      return 'https://view.officeapps.live.com/op/embed.aspx?src=' + sampleUrl
     },
     download(path) {
       console.log('downloading' + this.getDownloadLink(path))
