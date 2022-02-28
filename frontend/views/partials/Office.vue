@@ -35,7 +35,7 @@ export default {
   methods: {
     googleDocs(path) {
       const sampleUrl = 'https://play.hyd-ant.app/docx.php' 
-      console.log(' path nya '+ this.getLink(path)  + '   :' + sampleUrl )
+      console.log(' path nya '+ this.getOffice(path)  + '   :' + sampleUrl )
       const officePath = this.getOffice(path) 
       return 'https://docs.google.com/gview?url=' + officePath + '&embedded=true'
     },
