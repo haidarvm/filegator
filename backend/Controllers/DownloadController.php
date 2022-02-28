@@ -127,18 +127,8 @@ class DownloadController {
         header('Content-Length: ' . $file['filesize']);
         header('Content-type: ' . $contentType);
         header('Content-Disposition: ' . $contentDisposition . '; filename="' . $file['filename'] . '.docx"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-        header('Pragma: public');
-        set_time_limit(0);
-        if ($file['stream']) {
-            while (!feof($file['stream'])) {
-                echo fread($file['stream'], 1024 * 8);
-                ob_flush();
-                flush();
-            }
-            fclose($file['stream']);
-        }
+        header('Content-Transfer-Encoding: binary');
+        readfile($file['stream']);
     }
 
     public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
