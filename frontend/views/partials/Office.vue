@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     googleDocs(path) {
-      console.log(path)
+      console.log(' path nya ' + sampleUrl + path)
       const sampleUrl = 'https://play.hyd-ant.app/docx.php'
       return 'https://docs.google.com/gview?url=' + sampleUrl + '&embedded=true'
     },
