@@ -3,7 +3,7 @@
     <div class="modal-card">
       <div class="modal-card-body preview">
         <strong>{{ currentItem.name }}</strong>
-        <a class="is-block name" @click="itemClick(currentItem.path)">
+        <a @click="download(currentItem.path)">
           {{ currentItem.name }}
         </a>
         <iframe :src="officeSrc(currentItem.path)" width="700" height="750"></iframe>
@@ -36,8 +36,9 @@ export default {
     officeSrc(path) {
       return 'https://docs.google.com/gview?url=http://remote.url.tld/' + this.getDownloadLink(path) + '&embedded=true'
     },
-    download(item) {
-      window.open(this.getDownloadLink(item.path), '_blank')
+    download(path) {
+      console.log('downloading' + this.getDownloadLink(path))
+      window.open(this.getDownloadLink(path), '_blank')
     },
     itemClick(item) {
         this.download(item)

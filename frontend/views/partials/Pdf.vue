@@ -3,7 +3,7 @@
     <div class="modal-card">
       <div class="modal-card-body preview">
         <strong>{{ currentItem.name }}</strong>
-        <a class="is-block name" @click="itemClick(imageSrc(currentItem.path))">
+        <a class="is-block name" @click="download(currentItem.path)">
           {{ currentItem.name }}
         </a>
         <object type="application/pdf" :data="pdfSrc(currentItem.path)" width="1500" height="800"></object>
@@ -36,8 +36,8 @@ export default {
     pdfSrc(path) {
       return this.getDownloadLink(path)
     },
-    download(item) {
-      window.open(this.getDownloadLink(item.path), '_blank')
+    download(path) {
+      window.open(this.getDownloadLink(path), '_blank')
     },
     itemClick(item) {
         this.download(item)
