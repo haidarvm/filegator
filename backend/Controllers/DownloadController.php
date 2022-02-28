@@ -142,14 +142,14 @@ class DownloadController {
             // return $response->redirect('/');
         }
         // echo "hello world". $file['filename'];
-        $extension = pathinfo($file['filename'], PATHINFO_EXTENSION);
-        $mimes = (new MimeTypes())->getMimeTypes($extension);
-        $contentType = !empty($mimes) ? $mimes[0] : 'application/octet-stream';
-        $disposition = HeaderUtils::DISPOSITION_ATTACHMENT;
-        $contentDisposition = HeaderUtils::makeDisposition($disposition, $file['filename'], 'file');
-        header('Content-Length: ' . $file['filesize']);
-        header('Content-type: ' . $contentType);
-        header('Content-Disposition: ' . $contentDisposition . '; filename="' . $file['filename'] . '.docx"');
+        // $extension = pathinfo($file['filename'], PATHINFO_EXTENSION);
+        // $mimes = (new MimeTypes())->getMimeTypes($extension);
+        // $contentType = !empty($mimes) ? $mimes[0] : 'application/octet-stream';
+        // $disposition = HeaderUtils::DISPOSITION_ATTACHMENT;
+        // $contentDisposition = HeaderUtils::makeDisposition($disposition, $file['filename'], 'file');
+        // header('Content-Length: ' . $file['filesize']);
+        // header('Content-type: ' . $contentType);
+        header('Content-Disposition: attachement; filename="' . $file['filename'] . '.docx"');
         header('Content-Transfer-Encoding: binary');
         readfile($file['stream']);
     }
