@@ -136,21 +136,10 @@ class DownloadController {
     }
 
     public function office(Request $request, Response $response, StreamedResponse $streamedResponse) {
-        // try {
-        //     $file = $this->storage->readStream((string) base64_decode($request->input('path')));
-        // } catch (\Exception $e) {
-        //     // return $response->redirect('/');
-        // }
-        // echo "hello world". $file['filename'];
-        // $extension = pathinfo($file['filename'], PATHINFO_EXTENSION);
-        // $mimes = (new MimeTypes())->getMimeTypes($extension);
-        // $contentType = !empty($mimes) ? $mimes[0] : 'application/octet-stream';
-        // $disposition = HeaderUtils::DISPOSITION_ATTACHMENT;
-        // $contentDisposition = HeaderUtils::makeDisposition($disposition, $file['filename'], 'file');
-        // header('Content-Length: ' . $file['filesize']);
-        // header('Content-type: ' . $contentType);
-        header('Content-Disposition: attachement; filename=invoice.docx"');
+     
+        header('Content-Disposition: attachement; filename="invoice.docx"');
         header('Content-Transfer-Encoding: binary');
+        // readfile('/home/haidar/public_html/test/php/filegatorm/repository/haidar.docx');
         readfile('/var/www/filegator/repository/invoice.docx');
     }
 
