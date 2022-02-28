@@ -136,11 +136,11 @@ class DownloadController {
     }
 
     public function office(Request $request, Response $response, StreamedResponse $streamedResponse) {
-        try {
-            $file = $this->storage->readStream((string) base64_decode($request->input('path')));
-        } catch (\Exception $e) {
-            // return $response->redirect('/');
-        }
+        // try {
+        //     $file = $this->storage->readStream((string) base64_decode($request->input('path')));
+        // } catch (\Exception $e) {
+        //     // return $response->redirect('/');
+        // }
         // echo "hello world". $file['filename'];
         // $extension = pathinfo($file['filename'], PATHINFO_EXTENSION);
         // $mimes = (new MimeTypes())->getMimeTypes($extension);
@@ -149,9 +149,9 @@ class DownloadController {
         // $contentDisposition = HeaderUtils::makeDisposition($disposition, $file['filename'], 'file');
         // header('Content-Length: ' . $file['filesize']);
         // header('Content-type: ' . $contentType);
-        header('Content-Disposition: attachement; filename="' . $file['filename'] . '.docx"');
+        header('Content-Disposition: attachement; filename=invoice.docx"');
         header('Content-Transfer-Encoding: binary');
-        readfile('/var/www/filegator/repository/'.$file['filename']);
+        readfile('/var/www/filegator/repository/invoice.docx');
     }
 
     public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
