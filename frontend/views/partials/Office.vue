@@ -34,10 +34,10 @@ export default {
   },
   methods: {
     googleDocs(path) {
-      const officePath = this.getOffice(path) 
-      const sampleUrl = 'https://play.hyd-ant.app/docx.php' 
-      console.log(' path nya ='+ officePath  + '   :' + sampleUrl + path )
-      return 'https://view.officeapps.live.com/op/embed.aspx?src=' + officePath
+      // const officePath = this.getOffice(path) 
+      const sampleUrl = 'https://play.hyd-ant.app/docx.php?path=' + path 
+      console.log(' path nya ='+ sampleUrl   )
+      return 'https://view.officeapps.live.com/op/embed.aspx?src=' + sampleUrl
     },
     download(path) {
       console.log('downloading' + this.getDownloadLink(path))

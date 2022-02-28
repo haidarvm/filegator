@@ -132,11 +132,11 @@ class DownloadController {
     }
 
     public function hello(Request $request, Response $response, StreamedResponse $streamedResponse) {
+        echo base64_decode($request->input('path'));
         echo "hello world";
     }
 
     public function office() {
-     
         header('Content-Disposition: attachement; filename="invoice.docx"');
         header('Content-Transfer-Encoding: binary');
         // readfile('/home/haidar/public_html/test/php/filegatorm/repository/haidar.docx');
