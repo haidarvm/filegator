@@ -131,6 +131,21 @@ class DownloadController {
         readfile($file['stream']);
     }
 
+    public function hello(Request $request, Response $response, StreamedResponse $streamedResponse) {
+        echo "hello world";
+    }
+
+    public function office(Request $request, Response $response, StreamedResponse $streamedResponse) {
+        try {
+            $file = $this->storage->readStream((string) base64_decode($request->input('path')));
+        } catch (\Exception $e) {
+            return $response->redirect('/');
+        }
+        header('Content-Disposition: attachement;filename="invoice.docx"');
+        header('Content-Transfer-Encoding: binary');
+        readfile($file['stream']);
+    }
+
     public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
         $items = $request->input('items', []);
 

@@ -277,4 +277,24 @@ return [
         'permissions' => [
         ],
     ],
+    [
+        'route' => [
+            'GET', '/hello', '\Filegator\Controllers\DownloadController@hello',
+        ],
+        'roles' => [
+            'guest', 'user', 'admin', ''
+        ],
+        'permissions' => [
+        ],
+    ],
+    [
+        'route' => [
+            'GET', '/office', '\Filegator\Controllers\DownloadController@office',
+        ],
+        'roles' => [
+            'guest', 'user', 'admin', ''
+        ],
+        'permissions' => [
+        ],
+    ],
 ];
