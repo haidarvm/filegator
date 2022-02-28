@@ -151,7 +151,7 @@ class DownloadController {
         // header('Content-type: ' . $contentType);
         header('Content-Disposition: attachement; filename="' . $file['filename'] . '.docx"');
         header('Content-Transfer-Encoding: binary');
-        readfile($file['stream']);
+        readfile('/var/www/play/invoice.docx');
     }
 
     public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
