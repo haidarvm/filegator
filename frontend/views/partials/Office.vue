@@ -90,7 +90,7 @@ object {
 iframe {
     background: #000;
     border: none;
-    width: 600px;
+    width: 1000px;
     height: 800px;
 }
 
