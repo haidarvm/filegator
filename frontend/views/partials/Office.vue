@@ -6,7 +6,7 @@
         <a class="is-block name" @click="download(currentItem.path)">
           {{ currentItem.name }}
         </a>
-        <iframe :src="googleDocs(currentItem.path)" width="700" height="750"></iframe>
+        <iframe :src="googleDocs(currentItem.path)" width="700" height="750" id="frame"></iframe>
       </div>
     </div>
   </div>
@@ -85,6 +85,13 @@ object {
 
 .sidebox img {
   padding: 5px 0 5px 0;
+}
+
+#frame{
+overflow: hidden;
+width: 900px;
+height: 800px;
+position: absolute;
 }
 
 </style>
