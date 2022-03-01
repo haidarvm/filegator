@@ -132,8 +132,10 @@ class DownloadController {
     }
 
     public function hello(Request $request, Response $response, StreamedResponse $streamedResponse) {
-        echo base64_decode($request->input('path'));
-        echo "hello world";
+        $file =  base64_decode($request->input('path'));
+        print_r($this->storage->getPathPrefix());
+        // echo $this->storage->readStream($file)['filename'];
+        echo "hello world" ;
     }
 
     public function office(Request $request) {
@@ -142,7 +144,7 @@ class DownloadController {
         header('Content-Disposition: attachement; filename="'.$path.'"');
         header('Content-Transfer-Encoding: binary');
         // readfile('/home/haidar/public_html/test/php/filegatorm/repository/haidar.docx');
-        readfile(__DIR__.'/repository'.$file);
+        readfile('/var/www/filegator/repository'.$file);
     }
 
     public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
