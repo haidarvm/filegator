@@ -156,7 +156,7 @@ const funcs = {
       return Vue.config.baseURL+'/office&path='+encodeURIComponent(Base64.encode(path))
     },
     getOfficePhp(path) {
-      return Vue.config.basicUrl+'/office.php&path='+encodeURIComponent(Base64.encode(path))
+      return Vue.config.basicUrl+'/office.php?path='+encodeURIComponent(Base64.encode(path))
     },
     hasPreview(name) {
       return this.isText(name) || this.isImage(name) || this.isPdf(name) || this.isOffice(name) || this.isVideo(name)
