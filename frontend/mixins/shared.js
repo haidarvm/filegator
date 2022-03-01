@@ -156,13 +156,16 @@ const funcs = {
       return Vue.config.baseURL+'/office&path='+encodeURIComponent(Base64.encode(path))
     },
     hasPreview(name) {
-      return this.isText(name) || this.isImage(name) || this.isPdf(name) || this.isOffice(name)
+      return this.isText(name) || this.isImage(name) || this.isPdf(name) || this.isOffice(name) || this.isVideo(name)
     },
     isText(name) {
       return this.hasExtension(name, store.state.config.editable)
     },
     isPdf(name) {
       return this.hasExtension(name, ['.pdf'])
+    },
+    isVideo(name) {
+      return this.hasExtension(name, ['.webm', '.mp4', '.ogg', '.mpg', '.mpeg', '.mpv', '.m4v', '.m4p', '.avi', '.mov', '.flv'])
     },
     isOffice(name) {
       return this.hasExtension(name, ['.docx', 'doc','.xls', '.xlsx', '.pptx'])

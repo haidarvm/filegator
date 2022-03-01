@@ -167,6 +167,7 @@ import Tree from './partials/Tree'
 import Editor from './partials/Editor'
 import Gallery from './partials/Gallery'
 import Pdf from './partials/Pdf'
+import Video from './partials/Video'
 import Office from './partials/Office'
 import Search from './partials/Search'
 import Pagination from './partials/Pagination'
@@ -428,6 +429,9 @@ export default {
       }
       if (this.isPdf(item.path)) {
         modal = Pdf
+      }
+      if (this.isVideo(item.path)) {
+        modal = Video
       }
       if (this.isOffice(item.path)) {
         modal = Office
