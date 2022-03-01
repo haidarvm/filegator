@@ -136,11 +136,13 @@ class DownloadController {
         echo "hello world";
     }
 
-    public function office() {
-        header('Content-Disposition: attachement; filename="invoice.docx"');
+    public function office(Request $request) {
+        $file = base64_decode($request->input('path'));
+        $path = str_replace("/", '', $file);
+        header('Content-Disposition: attachement; filename="'.$path.'"');
         header('Content-Transfer-Encoding: binary');
         // readfile('/home/haidar/public_html/test/php/filegatorm/repository/haidar.docx');
-        readfile('/var/www/filegator/repository/invoice.docx');
+        readfile(__DIR__.'/repository'.$file);
     }
 
     public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
