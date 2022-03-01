@@ -145,7 +145,7 @@ class DownloadController {
         $path = str_replace("/", '', $file);
         $full_path = '/var/www/filegator/repository/'.$path;
         // echo $full_path;exit;
-        header('Content-Disposition: attachement; filename=\"'.$path.'\"');
+        header('Content-Disposition: attachement; filename="'.$path.'"');
         header('Content-Transfer-Encoding: binary');
         readfile($full_path);
     }
