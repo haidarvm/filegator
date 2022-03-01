@@ -7,4 +7,4 @@ $filename =  basename($path);
 header('Content-Disposition: attachement;filename="'.$filename.'"');
 header('Content-Transfer-Encoding: binary');
 // readfile('/home/haidar/public_html/test/php/filegatorm/repository'.$path);
-// readfile($full_path);
+readfile($full_path);
