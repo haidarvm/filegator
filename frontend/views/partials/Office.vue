@@ -36,8 +36,9 @@ export default {
     googleDocs(path) {
       const officePhp = this.getOfficePhp(path)
       console.log('office path nya ='+ officePhp)
-      // return 'ttps://docs.google.com/viewerng/viewer?url=https://play.hyd-ant.app/invoice.docx&embedded=true'
-      return 'https://view.officeapps.live.com/op/embed.aspx?src=' + officePhp
+      // return 'https://docs.google.com/viewerng/viewer?url=https://play.hyd-ant.app/invoice.docx&embedded=true'
+      // return 'https://view.officeapps.live.com/op/embed.aspx?src=' + officePhp
+      return 'https://docs.google.com/viewerng/viewer?url=' + officePhp + '&embedded=true'
     },
     download(path) {
       console.log('downloading' + this.getDownloadLink(path))
