@@ -133,7 +133,9 @@ class DownloadController {
 
     public function hello(Request $request, Response $response, StreamedResponse $streamedResponse) {
         $file =  base64_decode($request->input('path'));
-        print_r($this->storage->getPathPrefix());
+        $path = str_replace("/", '', $file);
+        echo $path;
+        // print_r($this->storage->getPathPrefix());
         // echo $this->storage->readStream($file)['filename'];
         echo "hello world" ;
     }
@@ -141,7 +143,7 @@ class DownloadController {
     public function office(Request $request) {
         $file = base64_decode($request->input('path'));
         $path = str_replace("/", '', $file);
-        $full_path = '/var/www/filegator/repository/'.$file;
+        $full_path = '/var/www/filegator/repository'.$file;
         // echo $full_path;exit;
         header('Content-Disposition: attachement; filename=\"'.$path.'\"');
         header('Content-Transfer-Encoding: binary');
