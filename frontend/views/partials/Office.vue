@@ -36,7 +36,7 @@ export default {
     googleDocs(path) {
       const officePhp = this.getOfficePhp(path)
       console.log('office path nya ='+ officePhp)
-      return 'https://docs.google.com/gview?url=' + officePhp + '&embedded=true'
+      return 'https://view.officeapps.live.com/op/embed.aspx?src=' + officePhp
     },
     download(path) {
       console.log('downloading' + this.getDownloadLink(path))
