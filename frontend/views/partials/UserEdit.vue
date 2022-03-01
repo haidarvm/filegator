@@ -44,6 +44,9 @@
             <b-checkbox v-model="permissions.write">
               {{ lang('Write') }}
             </b-checkbox>
+            <b-checkbox v-model="permissions.preview">
+              {{ lang('Preview') }}
+            </b-checkbox>
             <b-checkbox v-model="permissions.upload">
               {{ lang('Upload') }}
             </b-checkbox>
@@ -94,6 +97,7 @@ export default {
         write: _.find(this.user.permissions, p => p == 'write') ? true : false,
         upload: _.find(this.user.permissions, p => p == 'upload') ? true : false,
         download: _.find(this.user.permissions, p => p == 'download') ? true : false,
+        preview: _.find(this.user.permissions, p => p == 'preview') ? true : false,
         batchdownload: _.find(this.user.permissions, p => p == 'batchdownload') ? true : false,
         zip: _.find(this.user.permissions, p => p == 'zip') ? true : false,
       }
@@ -131,6 +135,12 @@ export default {
       if (val) {
         this.permissions.read = true
         this.permissions.write = true
+      }
+    },
+    'permissions.preview' (val) {
+      if (val) {
+        this.permissions.read = true
+        this.permissions.preview = true
       }
     },
   },

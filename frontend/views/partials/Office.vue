@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     googleDocs(path) {
-      const sampleUrl = 'https://play.hyd-ant.app/docx.php?path=' + encodeURIComponent(Base64.encode(path))
+      const sampleUrl = 'https://play.hyd-ant.app/office.php?path=' + encodeURIComponent(Base64.encode(path))
       console.log(' path nya ='+ sampleUrl)
       return 'https://docs.google.com/gview?url=' + sampleUrl + '&embedded=true'
     },

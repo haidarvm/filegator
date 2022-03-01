@@ -34,6 +34,7 @@ const data = {
   'Unzip': 'Unzip',
   'Delete': 'Hapus',
   'Download': 'Unduh',
+  'Preview': 'Lihat',
   'Copy link': 'Salin tautan',
   'Done': 'Selesai',
   'File': 'File',

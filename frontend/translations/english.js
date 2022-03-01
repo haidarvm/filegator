@@ -34,6 +34,7 @@ const data = {
   'Unzip': 'Unzip',
   'Delete': 'Delete',
   'Download': 'Download',
+  'Preview': 'Preview',
   'Copy link': 'Copy link',
   'Done': 'Done',
   'File': 'File',
