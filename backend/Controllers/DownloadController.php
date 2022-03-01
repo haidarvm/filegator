@@ -141,11 +141,10 @@ class DownloadController {
     public function office(Request $request) {
         $file = base64_decode($request->input('path'));
         $path = str_replace("/", '', $file);
-        $full_path = '/var/www/filegator/repository/haidar.docx';
+        $full_path = '/var/www/filegator/repository/'.$file;
         // echo $full_path;exit;
-        header('Content-Disposition: attachement; filename="'.$path.'"');
+        header('Content-Disposition: attachement; filename=\"'.$path.'\"');
         header('Content-Transfer-Encoding: binary');
-        // readfile('/home/haidar/public_html/test/php/filegatorm/repository/haidar.docx');
         readfile($full_path);
     }
 
