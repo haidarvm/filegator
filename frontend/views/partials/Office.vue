@@ -6,7 +6,7 @@
         <a class="is-block name" @click="download(currentItem.path)">
           {{ currentItem.name }}
         </a>
-        <iframe :src="googleDocs(currentItem.path)" width='700' height='750' frameborder='0'></iframe>
+        <iframe :src="iframeSrc"></iframe>
       </div>
     </div>
   </div>
@@ -22,6 +22,7 @@ export default {
       content: '',
       currentItem: '',
       lineNumbers: true,
+      iframeSrc: 'https://docs.google.com/viewerng/viewer?url=' + this.getOfficePhp(this.item.path) + '&embedded=true',
     }
   },
   computed: {
@@ -33,13 +34,13 @@ export default {
     this.currentItem = this.item
   },
   methods: {
-    googleDocs(path) {
-      const officePhp = this.getOfficePhp(path)
-      console.log('office path nya ='+ officePhp)
-      // return 'https://docs.google.com/viewerng/viewer?url=https://play.hyd-ant.app/invoice.docx&embedded=true'
-      // return 'https://view.officeapps.live.com/op/embed.aspx?src=' + officePhp
-      return 'https://docs.google.com/viewerng/viewer?url=' + officePhp + '&embedded=true'
-    },
+    // googleDocs(path) {
+    //   const officePhp = this.getOfficePhp(path)
+    //   console.log('office path nya ='+ officePhp)
+    //   // return 'https://docs.google.com/viewerng/viewer?url=https://play.hyd-ant.app/invoice.docx&embedded=true'
+    //   // return 'https://view.officeapps.live.com/op/embed.aspx?src=' + officePhp
+    //   return 'https://docs.google.com/viewerng/viewer?url=' + officePhp + '&embedded=true'
+    // },
     download(path) {
       console.log('downloading' + this.getDownloadLink(path))
       window.open(this.getDownloadLink(path), '_blank')
