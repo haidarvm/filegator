@@ -141,10 +141,12 @@ class DownloadController {
     public function office(Request $request) {
         $file = base64_decode($request->input('path'));
         $path = str_replace("/", '', $file);
+        $full_path = '/var/www/filegator/repository/Asset Monitoring Modul.pptx';
+        // echo $full_path;exit;
         header('Content-Disposition: attachement; filename="'.$path.'"');
         header('Content-Transfer-Encoding: binary');
         // readfile('/home/haidar/public_html/test/php/filegatorm/repository/haidar.docx');
-        readfile('/var/www/filegator/repository'.$file);
+        readfile($full_path);
     }
 
     public function batchDownloadCreate(Request $request, Response $response, ArchiverInterface $archiver) {
