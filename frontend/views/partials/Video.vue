@@ -6,9 +6,7 @@
         <a class="is-block name" @click="download(currentItem.path)">
           {{ currentItem.name }}
         </a>
-        <video controls width="800">
-          <source :src="vidSrc(currentItem.path)" type="video/mp4">
-          Sorry, your browser doesn't support embedded videos.
+        <video width="800" controls autoplay loop :src="vidSrc(currentItem.path)">
         </video>
       </div>
     </div>
@@ -43,7 +41,7 @@ export default {
       window.open(this.getDownloadLink(path), '_blank')
     },
     itemClick(item) {
-        this.download(item)
+      this.download(item)
     }
   },
 }

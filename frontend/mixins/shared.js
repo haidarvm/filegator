@@ -165,7 +165,7 @@ const funcs = {
       return this.hasExtension(name, ['.pdf'])
     },
     isVideo(name) {
-      return this.hasExtension(name, ['.webm', '.mp4', '.ogg', '.mpg', '.mpeg', '.mpv', '.m4v', '.m4p', '.avi', '.mov', '.flv'])
+      return this.hasExtension(name, ['.webm', '.mp4', 'mkv', '.ogg', '.mpg', '.mpeg', '.mpv', '.m4v', '.m4p', '.avi', '.mov', '.flv'])
     },
     isOffice(name) {
       return this.hasExtension(name, ['.docx', 'doc','.xls', '.xlsx', '.pptx'])
@@ -175,6 +175,9 @@ const funcs = {
     },
     hasExtension(name, exts) {
       return !_.isEmpty(exts) && (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$', 'i')).test(name)
+    },
+    getExtension(name) {
+      return name.split('.').pop()
     },
     capitalize(string) {
       return string.charAt(0).toUpperCase() + string.slice(1)
