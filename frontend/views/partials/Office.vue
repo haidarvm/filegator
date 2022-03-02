@@ -22,7 +22,7 @@ export default {
       content: '',
       currentItem: '',
       lineNumbers: true,
-      iframeSrc: 'https://view.officeapps.live.com/op/embed.aspx?src=' + this.getOfficePhp(this.item.path),
+      iframeSrc: 'https://docs.google.com/viewerng/viewer?url=' + this.getOfficePhp(this.item.path) + '&embedded=true',
     }
   },
   computed: {
