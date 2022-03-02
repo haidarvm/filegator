@@ -171,7 +171,7 @@ const funcs = {
       return this.hasExtension(name, ['.webm', '.mp4', 'mkv', '.ogg', '.mpg', '.mpeg', '.mpv', '.m4v', '.m4p', '.avi', '.mov', '.flv'])
     },
     isOffice(name) {
-      return this.hasExtension(name, ['.docx', 'doc','.xls', '.xlsx', '.pptx'])
+      return this.hasExtension(name, ['.docx', 'doc','.xls', '.xlsx', '.csv', '.xls', '.pptx', '.ppt'])
     },
     isImage(name) {
       return this.hasExtension(name, ['.jpg', '.jpeg', '.gif', '.png', '.bmp', '.svg', '.tiff', '.tif'])
