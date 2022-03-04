@@ -130,7 +130,6 @@ class Filesystem implements Service
         }
 
         $path = $this->applyPathPrefix($path);
-
         return [
             'filename' => $this->getBaseName($path),
             'stream' => $this->storage->readStream($path),

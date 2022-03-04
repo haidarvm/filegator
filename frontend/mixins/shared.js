@@ -153,6 +153,7 @@ const funcs = {
       return Vue.config.baseURL+'/getfile&path='+encodeURIComponent(Base64.encode(path))
     },
     getOffice(path) {
+      console.log('tophp : ' + path)
       return Vue.config.baseURL+'/office&path='+encodeURIComponent(Base64.encode(path))
     },
     getOfficePhp(path) {

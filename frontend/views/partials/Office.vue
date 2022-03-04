@@ -6,7 +6,7 @@
         <a class="is-block name" @click="download(currentItem.path)">
           {{ currentItem.name }}
         </a>
-        <iframe :src="iframeSrc"></iframe>
+        <iframe :src="iframeSrc" />
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
       content: '',
       currentItem: '',
       lineNumbers: true,
-      iframeSrc: 'https://view.officeapps.live.com/op/embed.aspx?src=' + this.getOfficePhp(this.item.path),
+      iframeSrc: 'https://view.officeapps.live.com/op/embed.aspx?src=' + this.getOfficePhp(this.$store.state.path + this.item.path),
     }
   },
   computed: {
@@ -32,6 +32,8 @@ export default {
   },
   mounted() {
     this.currentItem = this.item
+    console.log('rootnya ' +this.$store.state.path)
+    console.log('pathnya ' + this.item.path)
   },
   methods: {
     // googleDocs(path) {
@@ -42,7 +44,7 @@ export default {
     //   return 'https://docs.google.com/viewerng/viewer?url=' + officePhp + '&embedded=true'
     // },
     download(path) {
-      console.log('downloading' + this.getDownloadLink(path))
+      console.log('downloading' + path)
       window.open(this.getDownloadLink(path), '_blank')
     },
     itemClick(item) {

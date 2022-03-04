@@ -58,6 +58,13 @@ const api = {
         .catch(error => reject(error))
     })
   },
+  getPath(){
+    return new Promise((resolve, reject) => {
+      axios.get('path')
+        .then(res => resolve(res.data.data))
+        .catch(error => reject(error))
+    })
+  },
   copyItems(params) {
     return new Promise((resolve, reject) => {
       axios.post('copyitems', {

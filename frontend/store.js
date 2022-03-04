@@ -73,6 +73,9 @@ export default new Vuex.Store({
       })
 
     },
+    setPath(state, data) {
+      state.path = data
+    },
     updateTreeNode(state, data) {
       let traverse = function (object) {
         for (let property in object) {

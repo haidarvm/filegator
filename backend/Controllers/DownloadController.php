@@ -48,6 +48,7 @@ class DownloadController {
         } catch (\Exception $e) {
             return $response->redirect('/');
         }
+        // print_r($file);exit;
 
         $streamedResponse->setCallback(function () use ($file) {
             // @codeCoverageIgnoreStart
@@ -111,6 +112,10 @@ class DownloadController {
         $this->session->save();
 
         $streamedResponse->send();
+    }
+
+    public function getPath(Request $request, Response $response) {
+        return $response->json($this->storage->getPathPrefix());
     }
 
     public function getFile(Request $request, Response $response, StreamedResponse $streamedResponse) {

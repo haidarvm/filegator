@@ -64,7 +64,10 @@ export default {
           this.$store.commit('setUser', user)
           api.changeDir({
             to: '/'
-          }).then(() => this.$router.push('/').catch(() => {}))
+          }).then(() => this.$router.push('/').catch(() => {})),
+          api.getPath().then(path => {
+              this.$store.commit('setPath', path)
+          }).catch(() =>{})
         })
         .catch(error => {
           if (error.response && error.response.data) {

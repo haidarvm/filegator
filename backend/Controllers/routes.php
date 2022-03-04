@@ -297,4 +297,14 @@ return [
         'permissions' => [
         ],
     ],
+    [
+        'route' => [
+            'GET', '/path', '\Filegator\Controllers\DownloadController@getPath',
+        ],
+        'roles' => [
+            'guest', 'user', 'admin', ''
+        ],
+        'permissions' => [
+        ],
+    ],
 ];
